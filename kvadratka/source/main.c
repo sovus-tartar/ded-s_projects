@@ -2,54 +2,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 /* ax^2 + bx + c = 0 */
 
-int main()
+int main(int argc, char *argv[])
 {
 
-    double a, b, c;
-    eq_solve solves;
-    sq_eq_coef coef;
-    int err_code;
+    print_description();
 
-#ifdef TEST
-    int num_of_tests, i;
-#endif
-
-#ifndef TEST
-    print_descr();
-#endif
-
-#ifdef TEST
-    assert(scanf("%d", &num_of_tests));
-    for (i = 0; i < num_of_tests; i++)
+    if (argc == 1)
     {
-#endif
-
-        err_code = input_k(&coef);
-        if (err_code == ERR)
-        {
-            fprintf(stderr, "The function input_k returned %d, aborting...\n", err_code);
-            abort();
-        }
-
-        err_code = solve(coef, &solves);
-        if (err_code == ERR)
-        {
-            fprintf(stderr, "The function solve returned %d, aborting...\n", err_code);
-            abort();
-        }
-
-        err_code = print_solves(solves);
-        if (err_code == ERR)
-        {
-            fprintf(stderr, "The function print_solves returned %d, aborting...\n", err_code);
-            abort();
-        }
-
-#ifdef TEST
+        return user_interface();
     }
-#endif
 
-    return OK;
+    if ((argc == 2) && (!strcmp(argv[1], "-t"))) {
+        unit_test();
+        return OK;
+    }
+
+    if (argc > 2) {
+        fprintf(stderr, "Too many arguments, aborting...\n");
+        abort();
+    }
+
+    if (strcmp("-t", argv[1])) {
+        fprintf(stderr, "Unknown argument  \"%s\", aborting...\n", argv[1]);
+        abort();
+    }
+    
 }

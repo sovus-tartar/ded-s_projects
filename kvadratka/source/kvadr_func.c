@@ -2,10 +2,11 @@
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
+#include <stdlib.h>
 
 double epsilon = 0.00001;
 
-void print_descr()
+void print_description()
 {
     printf("Square equations solver by Sovus_tartar, 2022\n");
 }
@@ -15,59 +16,62 @@ int is_equal(double num1, double num2)
     return (fabs(num1 - num2) < epsilon);
 }
 
-int input_k(sq_eq_coef *coef)
+int input_coefficients(sq_eq_coef *coefficients)
 {
     int succ_read;
     int ch;
     double a, b, c;
-#ifndef TEST
+
     printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
-#endif
+
     succ_read = scanf("%lf%lf%lf", &a, &b, &c);
 
     if (succ_read != 3)
     {
-        fprintf(stderr, "The function input_k read %d coefficients of 3\n", succ_read);
+        fprintf(stderr, "The function input_coefficients read %d coefficients of 3\n", succ_read);
         return ERR;
     }
 
-    coef->a = a;
-    coef->b = b;
-    coef->c = c;
-#ifdef TEST
-    printf("Equation: %.2lf*x^2 + (%.2lf)*x + (%.2lf) = 0\n", a, b, c);
-#endif
+    coefficients->a = a;
+    coefficients->b = b;
+    coefficients->c = c;
+
     return OK;
 }
 
-int solve(sq_eq_coef coef, eq_solve *solves)
+int solve_square_equation(sq_eq_coef coefficients, eq_solve *solves)
 {
-    double a, b, c, discr;
-    a = coef.a;
-    b = coef.b;
-    c = coef.c;
+    double a, b, c, discriminant;
+    a = coefficients.a;
+    b = coefficients.b;
+    c = coefficients.c;
 
-    if ((a == 0) && (b == 0) && (c == 0))
+    if ((is_equal(a, 0)) && (is_equal(b, 0)) && (is_equal(c, 0)))
     {
         solves->num_of_sol = -1;
         return OK;
     }
 
-    if ((a == 0) && (b == 0) && (c != 0))
+    if ((is_equal(a, 0)) && (is_equal(b, 0)) && (!is_equal(c, 0)))
     {
         solves->num_of_sol = 0;
         return OK;
     }
 
-    discr = b * b - 4 * a * c;
+    if (is_equal(a, 0)) {
+        solve_linear_equation(coefficients, solves);
+        return OK;
+    }
 
-    if (is_equal(discr, 0))
+    discriminant = b * b - 4 * a * c;
+
+    if (is_equal(discriminant, 0))
     {
         solves->num_of_sol = 1;
         solves->x1 = -b / (2 * a);
         return OK;
     }
-    else if (discr < 0)
+    else if (discriminant < 0)
     {
         solves->num_of_sol = 0;
         return OK;
@@ -75,15 +79,30 @@ int solve(sq_eq_coef coef, eq_solve *solves)
     else
     {
         double discr_sqrt;
-        discr_sqrt = sqrt(discr);
+        discr_sqrt = sqrt(discriminant);
         solves->num_of_sol = 2;
         solves->x1 = (-b - discr_sqrt) / (2 * a);
         solves->x2 = (-b + discr_sqrt) / (2 * a);
         return OK;
     }
 
-    fprintf(stderr, "Uknown error in function solve\n, aborting...");
+    fprintf(stderr, "Uknown error in function solve_square_equation\n, aborting...");
     return ERR;
+}
+
+int solve_linear_equation(sq_eq_coef coefficients, eq_solve *solves) {
+    double a, b, c;
+
+    a = coefficients.a;
+    assert(is_equal(a, 0));
+
+    b = coefficients.b;
+    c = coefficients.c;
+
+    solves -> num_of_sol = 1;
+    solves -> x1 = -c / b;
+
+    return OK;
 }
 
 int print_solves(eq_solve solves)
@@ -107,4 +126,34 @@ int print_solves(eq_solve solves)
 
     fprintf(stderr, "The number of solutions is unknown %d\n", solves.num_of_sol);
     return ERR;
+}
+
+int user_interface()
+{
+    eq_solve solves;
+    sq_eq_coef coefficients;
+    int err_code;
+
+    err_code = input_coefficients(&coefficients);
+    if (err_code == ERR)
+    {
+        fprintf(stderr, "The function input_coefficients returned %d, aborting...\n", err_code);
+        abort();
+    }
+
+    err_code = solve_square_equation(coefficients, &solves);
+    if (err_code == ERR)
+    {
+        fprintf(stderr, "The function solve_square_equation returned %d, aborting...\n", err_code);
+        abort();
+    }
+
+    err_code = print_solves(solves);
+    if (err_code == ERR)
+    {
+        fprintf(stderr, "The function print_solves returned %d, aborting...\n", err_code);
+        abort();
+    }
+
+    return OK;
 }

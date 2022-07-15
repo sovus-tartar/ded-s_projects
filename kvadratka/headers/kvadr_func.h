@@ -20,8 +20,15 @@ enum error_codes
     OK = 0
 };
 
-void print_descr();
+void print_description();
 int is_equal(double num1, double num2);
-int input_k(sq_eq_coef *coef);
-int solve(sq_eq_coef coef, eq_solve *solves);
+int input_coefficients(sq_eq_coef *coef);
+int solve_square_equation(sq_eq_coef coefficients, eq_solve *solves);
+int solve_linear_equation(sq_eq_coef coefficients, eq_solve *solves);
 int print_solves(eq_solve solves);
+int user_interface();
+
+int unit_test();
+int input_solves(eq_solve *solve);
+int is_equal_solves(eq_solve solve1, eq_solve solve2);
+void print_coefficients(sq_eq_coef coefficients);
