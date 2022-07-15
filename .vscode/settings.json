@@ -1,6 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "kvadr_func.h": "c"
     }
 }

@@ -1,3 +1,4 @@
+
 #include "../headers/kvadr_func.h"
 #include <stdio.h>
 #include <stdlib.h>

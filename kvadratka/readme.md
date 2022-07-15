@@ -36,3 +36,5 @@ This program solves square equations.
     1 - number of solutions. If -1 it means that all x are solutions
 
     -1 - solution(s)
+
+4. To run kvadratka in test mode use "-t" parameter

@@ -1,10 +1,11 @@
+
 #include "../headers/kvadr_func.h"
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
 #include <stdlib.h>
-
-double epsilon = 0.00001;
+/// Accuracy of floating point numbers comparison
+double epsilon = 0.00001; 
 
 void print_description()
 {
