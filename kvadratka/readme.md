@@ -33,6 +33,6 @@ This program solves square equations.
     
     1 2 1 - coefficients of ax^2 + bx + c
     
-    1 - number of solutions. If -1 it means that all x are solutions/
+    1 - number of solutions. If -1 it means that all x are solutions
 
     -1 - solution(s)
