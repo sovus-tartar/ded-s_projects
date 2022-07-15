@@ -8,7 +8,7 @@ This program solves square equations.
 
         git clone https://github.com/sovus-tartar/ded-s_projects
 
-3. Then go to the "LFU_cache_project" directory:
+3. Then go to the "kvadratka" directory:
 
         cd ded's_projects/kvadratka
 
@@ -16,15 +16,23 @@ This program solves square equations.
 
         make
    
-5. If you wanna get test configuration run:
+6. Enjoy!
+   
+## Tests
 
-        make test
-
-6. To run test you can put input file in format:
-
+0. Manually created test is "111.in"
+1. The test generator is included in folder tests.
+2. To generate tests you have to run "test_generator" and put a number of tests you want to be. 
+3. It will make tests in format: 
+   
         3
-        1 2 1
-        0 0 0
-        0 0 1
-    First number - number of equations, all other - coefficients of equations.
-    The example is in tests folder(111.in)
+        1 2 1 1 -1
+        0 0 0 -1
+        0 2 -4 1 2
+    3 - number of tests
+    
+    1 2 1 - coefficients of ax^2 + bx + c
+    
+    1 - number of solutions. If -1 it means that all x are solutions/
+
+    -1 - solution(s)
