@@ -4,8 +4,9 @@
 #include <assert.h>
 #include <math.h>
 #include <stdlib.h>
+
 /// Accuracy of floating point numbers comparison
-double epsilon = 0.00001; 
+const double epsilon = 0.00001; 
 
 void print_description()
 {
@@ -17,19 +18,31 @@ int is_equal(double num1, double num2)
     return (fabs(num1 - num2) < epsilon);
 }
 
+int check_coefficients(double a, double b, double c) {
+    return (isfinite(a) && isfinite(b) && isfinite(c));
+}
+
 int input_coefficients(sq_eq_coef *coefficients)
 {
-    int succ_read;
-    int ch;
+    int successful_read;
     double a, b, c;
+
+    a = NAN;
+    b = NAN;
+    c = NAN;
 
     printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
 
-    succ_read = scanf("%lf%lf%lf", &a, &b, &c);
+    successful_read = scanf("%lf%lf%lf", &a, &b, &c);
 
-    if (succ_read != 3)
+    if (successful_read != 3)
     {
-        fprintf(stderr, "The function input_coefficients read %d coefficients of 3\n", succ_read);
+        fprintf(stderr, "The function input_coefficients read %d coefficients of 3\n", successful_read);
+        return ERR;
+    }
+
+    if (!check_coefficients(a, b, c)) {
+        fprintf(stderr, "The function input_coefficients read incorrect coefficients\n");
         return ERR;
     }
 
