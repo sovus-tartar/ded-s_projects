@@ -1,4 +1,7 @@
 kvadratka/kvadratka
-kvadratka/kvadratka_test
-.vscode
+.vscode/
 kvadratka/docs
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/settings.json
+.vscode/targets.log
