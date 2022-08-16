@@ -1,5 +1,10 @@
 # Square equations solver
 This program solves square equations.
+
+## Usage
+
+        ./kvadratka
+
 ## Installation
 
 1. Make sure that gcc and git is installed on your computer.
@@ -37,4 +42,7 @@ This program solves square equations.
 
     -1 - solution(s)
 
-4. To run kvadratka in test mode use "-t" parameter
+
+### Usage (for tests)
+
+        ./kvadratka -t < test_file.in

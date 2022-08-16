@@ -10,7 +10,7 @@ For successful compilation you have to have all repo cloned because of dependenc
         
         ./test_generator
 2. Enter number of tests you want to get
-3. To put tests to file you may use ">>" in linux terminal
+3. To put tests to file you may use ">" at bash terminal
 
 ## The format of tests
 
@@ -26,5 +26,4 @@ For successful compilation you have to have all repo cloned because of dependenc
 1 - number of solutions. If -1 it means that all x are solutions
 
 -1 - solution(s)
-
         

@@ -6,6 +6,8 @@
 #include <string.h>
 /* ax^2 + bx + c = 0 */
 
+int test_mode_enabled = 0;
+
 int main(int argc, char *argv[])
 {
 
@@ -17,6 +19,7 @@ int main(int argc, char *argv[])
     }
 
     if ((argc == 2) && (!strcmp(argv[1], "-t"))) {
+        test_mode_enabled = 1;
         unit_test();
         return OK;
     }

@@ -1,4 +1,4 @@
-CC = gcc
+CC = g++
 OBJ_FLAGS = -lm -c
 FLAGS = -lm -o
 NAME = kvadratka

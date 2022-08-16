@@ -1,8 +1,11 @@
+#include "../../kvadratka/headers/kvadr_func.h"
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 #include <assert.h>
-#include "../../headers/kvadr_func.h"
+
+int test_mode_enabled = 0;
+
 // Test generator for Kvadratka
 // by Sovus_tartar, 2022
 

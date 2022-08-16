@@ -1,4 +1,4 @@
-CC = gcc
+CC = g++
 OBJ_FLAGS = -c
 FLAGS = -lm -o
 NAME = test_generator
@@ -10,7 +10,6 @@ $(NAME): test_gen.o kvadr_func.o
 
 test_gen.o:
 	$(CC) $(OBJ_FLAGS) ./source/test_gen.c
-
 kvadr_func.o:
 	$(CC) $(OBJ_FLAGS) ../kvadratka/source/kvadr_func.c
 clean:

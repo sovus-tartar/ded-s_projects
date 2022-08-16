@@ -1,5 +1,11 @@
-
 #pragma once
+
+///The accuracy of double numbers comparison
+extern const double epsilon;
+
+
+///Indicates if the "-t" flag enabled. For debug purposes
+extern test_mode_enabled;
 
 /**
  * @brief Square equation coefficients
@@ -124,3 +130,17 @@ int is_equal_solves(eq_solve solve1, eq_solve solve2);
  * @param coefficients 
  */
 void print_coefficients(sq_eq_coef coefficients);
+
+/**
+ * @brief Clean buffer
+ * This function cleans stdin 
+ * @return 0
+ */
+int clean_buffer();
+
+/**
+ * @brief Check buffer
+ * This function checks if there is something in stdin buffer but space symbols TILL THE END OF LINE. 
+ * @return 1 if there are symbol except space symbol, else 0
+ */
+int check_buffer();

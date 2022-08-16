@@ -1,12 +1,12 @@
-
 #include "../headers/kvadr_func.h"
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-/// Accuracy of floating point numbers comparison
-const double epsilon = 0.00001; 
+const double epsilon = 0.000001;
+extern int test_mode_enabled;
 
 void print_description()
 {
@@ -15,11 +15,33 @@ void print_description()
 
 int is_equal(double num1, double num2)
 {
+    
     return (fabs(num1 - num2) < epsilon);
 }
 
 int check_coefficients(double a, double b, double c) {
     return (isfinite(a) && isfinite(b) && isfinite(c));
+}
+
+int clean_buffer() {
+    char c;
+    c = 0;
+
+    while (((c = getchar()) != '\n') && (c != EOF))
+        continue;
+    return 0;
+}
+
+int check_buffer() {
+    char c;
+    c = 0;
+
+    while (((c = getchar()) != '\n') && (c != EOF)) {
+        if (!isspace(c))
+            return 0;
+    }
+
+    return 1;
 }
 
 int input_coefficients(sq_eq_coef *coefficients)
@@ -30,21 +52,21 @@ int input_coefficients(sq_eq_coef *coefficients)
     a = NAN;
     b = NAN;
     c = NAN;
+    successful_read = 0;
 
-    printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
-
+    if (test_mode_enabled == 0) {
+        printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
+    }
     successful_read = scanf("%lf%lf%lf", &a, &b, &c);
 
-    if (successful_read != 3)
-    {
-        fprintf(stderr, "The function input_coefficients read %d coefficients of 3\n", successful_read);
-        return ERR;
+    if (test_mode_enabled == 0) 
+
+    while ((successful_read != 3) || !check_coefficients(a, b, c) || !check_buffer()) {
+        fprintf(stderr, "Input error, please, try again\n");
+        clean_buffer();
+        successful_read = scanf("%lf%lf%lf", &a, &b, &c);
     }
 
-    if (!check_coefficients(a, b, c)) {
-        fprintf(stderr, "The function input_coefficients read incorrect coefficients\n");
-        return ERR;
-    }
 
     coefficients->a = a;
     coefficients->b = b;
@@ -59,6 +81,7 @@ int solve_square_equation(sq_eq_coef coefficients, eq_solve *solves)
     a = coefficients.a;
     b = coefficients.b;
     c = coefficients.c;
+    discriminant = 0;
 
     if ((is_equal(a, 0)) && (is_equal(b, 0)) && (is_equal(c, 0)))
     {
@@ -147,7 +170,9 @@ int user_interface()
     eq_solve solves;
     sq_eq_coef coefficients;
     int err_code;
+    err_code = 0;
 
+    
     err_code = input_coefficients(&coefficients);
     if (err_code == ERR)
     {
