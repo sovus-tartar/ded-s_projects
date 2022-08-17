@@ -1,11 +1,12 @@
-#include "../headers/kvadr_func.h"
 #include <stdio.h>
 #include <assert.h>
 #include <math.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <errno.h>
+#include "../headers/kvadr_func.h"
 
-const double epsilon = 0.000001;
+const double EPSILON = 0.000001;
 extern int test_mode_enabled;
 
 void print_description()
@@ -13,30 +14,32 @@ void print_description()
     printf("Square equations solver by Sovus_tartar, 2022\n");
 }
 
-int is_equal(double num1, double num2)
+int is_equal(const double num1, const double num2)
 {
-    
-    return (fabs(num1 - num2) < epsilon);
+    return (fabs(num1 - num2) < EPSILON);
 }
 
-int check_coefficients(double a, double b, double c) {
+int check_coefficients(double a, double b, double c)
+{
     return (isfinite(a) && isfinite(b) && isfinite(c));
 }
 
-int clean_buffer() {
-    char c;
-    c = 0;
+int clean_buffer()
+{
+    char c = 0;
 
     while (((c = getchar()) != '\n') && (c != EOF))
         continue;
     return 0;
 }
 
-int check_buffer() {
+int check_buffer()
+{
     char c;
     c = 0;
 
-    while (((c = getchar()) != '\n') && (c != EOF)) {
+    while (((c = getchar()) != '\n') && (c != EOF))
+    {
         if (!isspace(c))
             return 0;
     }
@@ -46,58 +49,78 @@ int check_buffer() {
 
 int input_coefficients(sq_eq_coef *coefficients)
 {
-    int successful_read;
+    int successful_read, attempts;
     double a, b, c;
 
     a = NAN;
     b = NAN;
     c = NAN;
     successful_read = 0;
+    attempts = 0;
 
-    if (test_mode_enabled == 0) {
+    if (test_mode_enabled == 0)
+    {
         printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
     }
     successful_read = scanf("%lf%lf%lf", &a, &b, &c);
 
-    if (test_mode_enabled == 0) 
+    if (test_mode_enabled == 0)
+    {
+        attempts = 1;
 
-    while ((successful_read != 3) || !check_coefficients(a, b, c) || !check_buffer()) {
-        fprintf(stderr, "Input error, please, try again\n");
-        clean_buffer();
-        successful_read = scanf("%lf%lf%lf", &a, &b, &c);
+        while ((successful_read != 3) || !check_coefficients(a, b, c) || !check_buffer())
+        {
+            attempts += 1;
+            fprintf(stderr, "Input error, please, try again\n");
+            clean_buffer();
+
+            if (attempts <= 3)
+                successful_read = scanf("%lf%lf%lf", &a, &b, &c);
+            else {
+                errno = EIO;
+                perror("input coefficients");
+                return EIO;
+            }
+                
+        }
     }
-
 
     coefficients->a = a;
     coefficients->b = b;
     coefficients->c = c;
 
-    return OK;
+    return 0;
 }
 
-int solve_square_equation(sq_eq_coef coefficients, eq_solve *solves)
+int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 {
     double a, b, c, discriminant;
-    a = coefficients.a;
-    b = coefficients.b;
-    c = coefficients.c;
-    discriminant = 0;
+    a = coefficients->a;
+    b = coefficients->b;
+    c = coefficients->c;
+    discriminant = NAN;
+
+    if (!check_coefficients(coefficients->a, coefficients->b, coefficients->c)) {
+        errno = EDOM;
+        perror("solve_square_equation");
+        return errno;
+    }
 
     if ((is_equal(a, 0)) && (is_equal(b, 0)) && (is_equal(c, 0)))
     {
         solves->num_of_sol = -1;
-        return OK;
+        return 0;
     }
 
     if ((is_equal(a, 0)) && (is_equal(b, 0)) && (!is_equal(c, 0)))
     {
         solves->num_of_sol = 0;
-        return OK;
+        return 0;
     }
 
-    if (is_equal(a, 0)) {
-        solve_linear_equation(coefficients, solves);
-        return OK;
+    if (is_equal(a, 0))
+    {
+        return solve_linear_equation(coefficients, solves);
     }
 
     discriminant = b * b - 4 * a * c;
@@ -106,12 +129,12 @@ int solve_square_equation(sq_eq_coef coefficients, eq_solve *solves)
     {
         solves->num_of_sol = 1;
         solves->x1 = -b / (2 * a);
-        return OK;
+        return 0;
     }
     else if (discriminant < 0)
     {
         solves->num_of_sol = 0;
-        return OK;
+        return 0;
     }
     else
     {
@@ -120,50 +143,100 @@ int solve_square_equation(sq_eq_coef coefficients, eq_solve *solves)
         solves->num_of_sol = 2;
         solves->x1 = (-b - discr_sqrt) / (2 * a);
         solves->x2 = (-b + discr_sqrt) / (2 * a);
-        return OK;
+        return 0;
     }
-
-    fprintf(stderr, "Uknown error in function solve_square_equation\n, aborting...");
-    return ERR;
 }
 
-int solve_linear_equation(sq_eq_coef coefficients, eq_solve *solves) {
+int solve_linear_equation(const sq_eq_coef *coefficients, eq_solve *solves)
+{
     double a, b, c;
 
-    a = coefficients.a;
-    assert(is_equal(a, 0));
+    a = coefficients->a;
+    b = coefficients->b;
+    c = coefficients->c;
 
-    b = coefficients.b;
-    c = coefficients.c;
+    if (check_coefficients(a, b, c)) {
+        errno = EDOM;
+        perror("solve_linear_equation");
+        return errno;
+    }
 
-    solves -> num_of_sol = 1;
-    solves -> x1 = -c / b;
+    if (is_equal(a, 0))
+    {
+        fprintf(stderr, "Not linear equation\n");
+        errno = EDOM;
+        perror("solve_linear_equation");
+        return EDOM;
+    }
+    else
+    {
+        solves->num_of_sol = 1;
+        solves->x1 = -c / b;
+    }
 
-    return OK;
+    return 0;
 }
 
-int print_solves(eq_solve solves)
+int check_solves(const eq_solve *solves) {
+    switch(solves->num_of_sol) {
+        case INF_SOLUTIONS:
+            return (isnan(solves->x1)&&isnan(solves->x2));        
+        case NO_SOLUTIONS:
+            return (isnan(solves->x1)&&isnan(solves->x2));    
+        case ONE_SOLUTION:
+            return (isfinite(solves->x1)&&isnan(solves->x2));
+        case TWO_SOLUTIONS:
+            return (isfinite(solves->x1)&&isfinite(solves->x2));
+        default:
+            return 0;
+    }
+}
+
+int print_solves(const eq_solve *solves)
 {
 
-    switch (solves.num_of_sol)
+    if (!check_solves(solves)) {
+        errno = EINVAL;
+        perror("print_solves");
+        return errno;
+    }
+
+    switch (solves->num_of_sol)
     {
     case -1:
         printf("All x are solves\n");
-        return OK;
+        return 0;
     case 0:
         printf("No solutions\n");
-        return OK;
+        return 0;
     case 1:
-        printf("x = %lf\n", solves.x1);
-        return OK;
+        printf("x = %lf\n", solves->x1);
+        return 0;
     case 2:
-        printf("x1 = %lf\nx2 = %lf\n", solves.x1, solves.x2);
-        return OK;
+        printf("x1 = %lf\nx2 = %lf\n", solves->x1, solves->x2);
+        return 0;
+    default:
+        fprintf(stderr, "The number of solutions is unknown %d\n", solves->num_of_sol);
+        errno = EINVAL;
+        perror("print_solves");
+        return errno;
     }
-
-    fprintf(stderr, "The number of solutions is unknown %d\n", solves.num_of_sol);
-    return ERR;
 }
+
+void init_sq_eq_coef(sq_eq_coef *A)
+{
+    A->a = NAN;
+    A->b = NAN;
+    A->c = NAN;
+}
+
+void init_eq_solves(eq_solve *A)
+{
+    A->num_of_sol = INIT_VALUE;
+    A->x1 = NAN;
+    A->x2 = NAN;
+}
+
 
 int user_interface()
 {
@@ -171,28 +244,15 @@ int user_interface()
     sq_eq_coef coefficients;
     int err_code;
     err_code = 0;
-
+    init_sq_eq_coef(&coefficients);
+    init_eq_solves(&solves);
     
-    err_code = input_coefficients(&coefficients);
-    if (err_code == ERR)
-    {
-        fprintf(stderr, "The function input_coefficients returned %d, aborting...\n", err_code);
-        abort();
-    }
+    input_coefficients(&coefficients);
+    solve_square_equation(&coefficients, &solves);
+    print_solves(&solves);
 
-    err_code = solve_square_equation(coefficients, &solves);
-    if (err_code == ERR)
-    {
-        fprintf(stderr, "The function solve_square_equation returned %d, aborting...\n", err_code);
-        abort();
-    }
-
-    err_code = print_solves(solves);
-    if (err_code == ERR)
-    {
-        fprintf(stderr, "The function print_solves returned %d, aborting...\n", err_code);
-        abort();
-    }
-
-    return OK;
+    if (errno != 0) 
+        perror("user_interface");
+    
+    return err_code;
 }
