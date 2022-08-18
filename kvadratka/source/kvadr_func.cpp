@@ -48,23 +48,14 @@ int check_buffer()
 
 int input_coefficients(sq_eq_coef *coefficients)
 {
-    int successful_read;
-    
-    successful_read = 0;
-    
-
     if (test_mode_enabled == 0)
     {
         printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
     }
 
-    double a, b, c;
+    double a = NAN, b = NAN, c = NAN;
 
-    a = NAN;
-    b = NAN;
-    c = NAN;
-
-    successful_read = scanf("%lf%lf%lf", &a, &b, &c);
+    int successful_read = scanf("%lf%lf%lf", &a, &b, &c);
 
     int attempts = 1;
 
@@ -97,13 +88,13 @@ int input_coefficients(sq_eq_coef *coefficients)
 
 int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 {
-    double a, b, c;
-    a = coefficients->a;
-    b = coefficients->b;
-    c = coefficients->c;
+    
+    double a = coefficients->a;
+    double b = coefficients->b;
+    double c = coefficients->c;
     
 
-    if (check_coefficients(coefficients->a, coefficients->b, coefficients->c))
+    if (check_coefficients(a, b, c))
     {
         errno = EDOM;
         perror("solve_square_equation");
@@ -150,11 +141,9 @@ int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 
 int solve_linear_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 {
-    double a, b, c;
-
-    a = coefficients->a;
-    b = coefficients->b;
-    c = coefficients->c;
+    double a = coefficients->a;
+    double b = coefficients->b;
+    double c = coefficients->c;
 
     if (check_coefficients(a, b, c))
     {
@@ -259,11 +248,11 @@ int solve_for_user()
 {
     eq_solve solves;
     sq_eq_coef coefficients;
-    int err_code;
-    err_code = 0;
     init_sq_eq_coef(&coefficients);
     init_eq_solves(&solves);
 
+    int err_code = 0;
+    
     input_coefficients(&coefficients);
     solve_square_equation(&coefficients, &solves);
     print_solves(&solves);

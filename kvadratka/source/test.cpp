@@ -44,10 +44,7 @@ int input_solves(eq_solve *solve)
 
     solve->num_of_sol = num_of_sol;
 
-    double x1, x2;
-
-    x1 = NAN;
-    x2 = NAN;
+    double x1 = NAN, x2 = NAN;
 
     switch (num_of_sol)
     {
@@ -71,8 +68,7 @@ int input_solves(eq_solve *solve)
 
 int unit_test()
 {
-    int n;
-    n = 0;
+    int n = 0;
 
     int success_input = scanf("%d", &n);
     assert(success_input && (n > 0));
