@@ -5,7 +5,7 @@
 #include <errno.h>
 
 #include "../headers/kvadr_func.h"
-
+#include "../headers/test.h"
 int test_mode_enabled = 0;
 
 int main(int argc, char *argv[])
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
     if (argc == 1)
     {
-        user_interface();
+        solve_for_user();
         if (errno != 0)
             perror("main");
         return errno;

@@ -255,7 +255,7 @@ void init_eq_solves(eq_solve *A)
     A->x2 = NAN;
 }
 
-int user_interface()
+int solve_for_user()
 {
     eq_solve solves;
     sq_eq_coef coefficients;
@@ -269,7 +269,7 @@ int user_interface()
     print_solves(&solves);
 
     if (errno != 0)
-        perror("user_interface");
+        perror("solve_for_user");
 
     return err_code;
 }

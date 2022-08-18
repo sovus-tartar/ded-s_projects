@@ -10,7 +10,7 @@ extern int test_mode_enabled;
  * @brief Square equation coefficients
  *
  * @details This structure contains the coefficients of equation \f$ ax^2 + bx + c = 0 \f$
- *
+ * All coefficients must be finite
  * @param a a coefficient
  * @param b b coefficient
  * @param c c coefficient
@@ -24,10 +24,12 @@ typedef struct sq_eq_coef_t
 
 /**
  * @brief Square equation solves
- *
  * @details This structure contains solve s of equation \f$ ax^2 + bx + c = 0 \f$.
- * If num_of_sol = -1 it means that all x are solutions. If num_of_sol = 1, the root should be in x1 field
- *
+ * Should be initialized using init_eq_solves function.
+ * Rules: if num_of_sol = INF_SOLUTIONS or NO_SOLUTIONS, then x1 and x2 must be NAN
+ * if num_of_sol = 1, x1 must be finite, x2 must be nan
+ * if num_of_sol = 2, x1 and x2 must be finite  
+ * 
  * @param num_of_sol number of solutions
  * @param x1 first root
  * @param x2 second root
@@ -73,7 +75,6 @@ int is_equal(const double num1, const double num2);
 /**
  * @brief Imput coefficient function
  * This function allows save input of coefficients of square equation with user messages.
- *
  * @param coef The structure of coefficients
  * @return int -1 if input error, 0 otherwise
  */
@@ -81,7 +82,6 @@ int input_coefficients(sq_eq_coef *coef);
 
 /**
  * @brief This function solves square equation
- *
  * @param coefficients structure of coefficients to read
  * @param solves the pointer to the structure of solves to write
  * @return int 0 if all is OK, -1 otherwise
@@ -107,19 +107,10 @@ int print_solves(const eq_solve *solves);
 
 /**
  * @brief User interface
- *
  * This function allows user to solve square equations with messages on the screen
- *
  * @return int 0 if all is ok, -1 otherwise
  */
-int user_interface();
-
-/**
- * @brief Unit test function
- *
- * @return int 0 if all is ok, -1 otherwise
- */
-int unit_test();
+int solve_for_user();
 
 /**
  * @brief Input solves function
@@ -129,22 +120,6 @@ int unit_test();
  * @return int 0 if OK, -1 otherwise
  */
 int input_solves(eq_solve *solve);
-
-/**
- * @brief Is equal solves
- * This function compares solves of equation
- * @warning It was used only for unit tests, may be unsafe!
- * @param solve1, solve2 solves
- * @return int 1 if equal, 0 otherwise
- */
-int is_equal_solves(const eq_solve *solve1, const eq_solve *solve2);
-
-/**
- * @brief Print coefficients
- * This function prints to the screen coefficients of square equation \f$ ax^2 + bx + c = 0 /f$
- * @param coefficients
- */
-void print_coefficients(const sq_eq_coef *coefficients);
 
 /**
  * @brief Clean buffer
@@ -160,6 +135,23 @@ int clean_buffer();
  */
 int check_buffer();
 
+/**
+ * @brief eq_solve type initializer
+ */
 void init_eq_solves(eq_solve *A);
 
+/**
+ * @brief sq_eq_coef type initializer
+ */
 void init_sq_eq_coef(sq_eq_coef *A);
+
+/**
+* @brief Checks coeefficients using isfinite()
+* @return 0 if it is OK, 1 otherwise
+*/
+int check_coefficients(double a, double b, double c);
+/**
+* @brief Checks solves structure if it is correct format
+* @return 0 if it is OK, 1 otherwise
+*/
+int check_solves(const eq_solve *solves);

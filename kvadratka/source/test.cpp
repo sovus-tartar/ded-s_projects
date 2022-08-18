@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <math.h>
 #include <errno.h>
-#include "../headers/kvadr_func.h"
+#include "../headers/test.h"
 
 void print_coefficients(const sq_eq_coef *coefficients)
 {
