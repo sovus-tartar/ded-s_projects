@@ -12,12 +12,17 @@ For successful compilation you have to have all repo cloned because of dependenc
 2. Enter number of tests you want to get
 3. To put tests to file you may use ">" at bash terminal
 
+### Attention!
+
+Test generator generates tests only with two solutions!
+
 ## The format of tests
 
         3
         1 2 1 1 -1
         0 0 0 -1
         0 2 -4 1 2
+        1 5 6 2 -3 -2
 
 3 - number of tests
     
