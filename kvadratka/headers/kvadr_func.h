@@ -41,18 +41,18 @@ typedef struct eq_solve_t
 
 /**
  * @brief Number of solutions
- * @param INIT_VALUE -2
+ * @param INIT_VALUE    -2
  * @param INF_SOLUTIONS -1
- * @param NO_SOLUTIONS 0
- * @param ONE_SOLUTION 1
- * @param TWO_SOLUTIONS 2
+ * @param NO_SOLUTIONS   0
+ * @param ONE_SOLUTION   1
+ * @param TWO_SOLUTIONS  2
  */
 enum num_of_solutions
 {
-    INIT_VALUE = -2,
+    INIT_VALUE    = -2,
     INF_SOLUTIONS = -1,
-    NO_SOLUTIONS = 0,
-    ONE_SOLUTION = 1,
+    NO_SOLUTIONS  = 0,
+    ONE_SOLUTION  = 1,
     TWO_SOLUTIONS = 2
 };
 
@@ -159,3 +159,7 @@ int clean_buffer();
  * @return 1 if there are symbol except space symbol, else 0
  */
 int check_buffer();
+
+void init_eq_solves(eq_solve *A);
+
+void init_sq_eq_coef(sq_eq_coef *A);
