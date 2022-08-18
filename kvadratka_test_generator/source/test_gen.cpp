@@ -29,7 +29,7 @@ int main()
 
     printf("%d\n", N);
 
-    for (i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
         double x1, x2, a, b, c;
         

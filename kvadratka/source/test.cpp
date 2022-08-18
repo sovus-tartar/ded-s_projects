@@ -91,15 +91,16 @@ int unit_test()
         print_coefficients(&coefficients);
         if (is_equal_solves(&expected_solve, &got_solve))
         {
-            printf("OK\n");
+            printf(ANSI_COLOR_GREEN "OK\n" ANSI_COLOR_RESET);
         }
         else
         {
             err_count += 1;
-            printf("ERROR, expected:\n");
+            printf(ANSI_COLOR_RED "ERROR, expected:\n");
             print_solves(&expected_solve);
             printf("Recieved:\n");
             print_solves(&got_solve);
+            printf(ANSI_COLOR_RESET);
         }
 
         printf("-----------------------------------------------------------\n");
