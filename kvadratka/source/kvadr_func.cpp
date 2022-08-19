@@ -174,7 +174,7 @@ int solve_linear_equation(const sq_eq_coef *coefficients, eq_solve *solves)
     } 
 
     solves->num_of_sol = ONE_SOLUTION;
-    solves->x1 = -c/b;
+    solves->x1 = -c / b;
 
     return 0;
 }
@@ -230,26 +230,30 @@ int print_solves(const eq_solve *solves)
     }
 }
 
-void init_sq_eq_coef(sq_eq_coef *A)
+sq_eq_coef init_sq_eq_coef()
 {
-    A->a = NAN;
-    A->b = NAN;
-    A->c = NAN;
+    sq_eq_coef A;
+    A.a = NAN;
+    A.b = NAN;
+    A.c = NAN;
+
+    return A;
 }
 
-void init_eq_solves(eq_solve *A)
-{
-    A->num_of_sol = INIT_VALUE;
-    A->x1 = NAN;
-    A->x2 = NAN;
+eq_solve init_eq_solves()
+{   
+    eq_solve A;
+    A.num_of_sol = INIT_VALUE;
+    A.x1 = NAN;
+    A.x2 = NAN;
+
+    return A;
 }
 
 int solve_for_user()
 {
-    eq_solve solves;
-    sq_eq_coef coefficients;
-    init_sq_eq_coef(&coefficients);
-    init_eq_solves(&solves);
+    eq_solve solves = init_eq_solves();
+    sq_eq_coef coefficients = init_sq_eq_coef();
 
     int err_code = 0;
     

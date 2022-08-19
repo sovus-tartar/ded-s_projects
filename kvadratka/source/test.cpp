@@ -77,12 +77,11 @@ int unit_test()
 
     for (int i = 0; i < n; i++)
     {
-        sq_eq_coef coefficients;
-        eq_solve expected_solve, got_solve;
+        sq_eq_coef coefficients = init_sq_eq_coef();
+        eq_solve expected_solve = init_eq_solves();
+        eq_solve got_solve = init_eq_solves();
 
-        init_sq_eq_coef(&coefficients);
-        init_eq_solves(&expected_solve);
-        init_eq_solves(&got_solve);
+        
 
         input_coefficients(&coefficients);
         input_solves(&expected_solve);

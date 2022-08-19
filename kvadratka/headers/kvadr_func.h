@@ -137,13 +137,15 @@ int check_buffer();
 
 /**
  * @brief eq_solve type initializer
+ * @return initialized variable
  */
-void init_eq_solves(eq_solve *A);
+eq_solve init_eq_solves();
 
 /**
  * @brief sq_eq_coef type initializer
+ * @return initialized variable
  */
-void init_sq_eq_coef(sq_eq_coef *A);
+sq_eq_coef init_sq_eq_coef();
 
 /**
 * @brief Checks coeefficients using isfinite()

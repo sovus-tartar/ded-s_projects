@@ -4,9 +4,9 @@ FLAGS = -lm -o
 NAME = kvadratka
 
 all: $(NAME) clean
-
+	
 $(NAME): main.o kvadr_func.o test.o
-	$(CC) main.o kvadr_func.o test.o $(FLAGS) $(NAME)
+	$(CC) *.o $(FLAGS) $(NAME)
 
 main.o:
 	$(CC) $(OBJ_FLAGS) ./source/main.cpp
