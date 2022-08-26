@@ -1,0 +1,82 @@
+\hypertarget{test_8cpp}{}\doxysection{source/test.cpp File Reference}
+\label{test_8cpp}\index{source/test.cpp@{source/test.cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../headers/test.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{test_8cpp_a3c902a3d6d47314be631a624237dea1d}{print\+\_\+coefficients}} (const \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$coefficients)
+\item 
+int \mbox{\hyperlink{test_8cpp_a310a3251d283f544de67eef7a86f1353}{is\+\_\+equal\+\_\+solves}} (const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solve1, const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solve2)
+\begin{DoxyCompactList}\small\item\em Is equal solves This function compares solves of equation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{test_8cpp_ad4998a8d8a291e6e27e8950515d30fa9}{input\+\_\+solves}} (\mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solve)
+\begin{DoxyCompactList}\small\item\em Input solves function This function is used to put solves from stdin to structure. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{test_8cpp_ae9b06a4e5b4aa1e99fb27bd47b1209ba}{unit\+\_\+test}} ()
+\begin{DoxyCompactList}\small\item\em Unit test function Unit test interface. Prints debug information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test_8cpp_ad4998a8d8a291e6e27e8950515d30fa9}\label{test_8cpp_ad4998a8d8a291e6e27e8950515d30fa9}} 
+\index{test.cpp@{test.cpp}!input\_solves@{input\_solves}}
+\index{input\_solves@{input\_solves}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{input\_solves()}{input\_solves()}}
+{\footnotesize\ttfamily int input\+\_\+solves (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solve }\end{DoxyParamCaption})}
+
+
+
+Input solves function This function is used to put solves from stdin to structure. 
+
+\begin{DoxyWarning}{Warning}
+It was used only for unit tests, may be unsafe! 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em solve} & the structure of solves pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if OK, -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{test_8cpp_a310a3251d283f544de67eef7a86f1353}\label{test_8cpp_a310a3251d283f544de67eef7a86f1353}} 
+\index{test.cpp@{test.cpp}!is\_equal\_solves@{is\_equal\_solves}}
+\index{is\_equal\_solves@{is\_equal\_solves}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_equal\_solves()}{is\_equal\_solves()}}
+{\footnotesize\ttfamily int is\+\_\+equal\+\_\+solves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solve1,  }\item[{const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solve2 }\end{DoxyParamCaption})}
+
+
+
+Is equal solves This function compares solves of equation. 
+
+\begin{DoxyWarning}{Warning}
+It was used only for unit tests, may be unsafe! 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em solve1,solve2} & solves \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1 if equal, 0 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{test_8cpp_a3c902a3d6d47314be631a624237dea1d}\label{test_8cpp_a3c902a3d6d47314be631a624237dea1d}} 
+\index{test.cpp@{test.cpp}!print\_coefficients@{print\_coefficients}}
+\index{print\_coefficients@{print\_coefficients}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_coefficients()}{print\_coefficients()}}
+{\footnotesize\ttfamily void print\+\_\+coefficients (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$}]{coefficients }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{test_8cpp_ae9b06a4e5b4aa1e99fb27bd47b1209ba}\label{test_8cpp_ae9b06a4e5b4aa1e99fb27bd47b1209ba}} 
+\index{test.cpp@{test.cpp}!unit\_test@{unit\_test}}
+\index{unit\_test@{unit\_test}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{unit\_test()}{unit\_test()}}
+{\footnotesize\ttfamily int unit\+\_\+test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unit test function Unit test interface. Prints debug information. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if all is ok, -\/1 otherwise 
+\end{DoxyReturn}

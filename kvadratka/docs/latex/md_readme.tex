@@ -1,0 +1,39 @@
+This program solves square equations.\hypertarget{md_readme_autotoc_md1}{}\doxysection{Usage}\label{md_readme_autotoc_md1}
+\begin{DoxyVerb}    ./kvadratka
+\end{DoxyVerb}
+ \hypertarget{md_readme_autotoc_md2}{}\doxysection{Installation}\label{md_readme_autotoc_md2}
+
+\begin{DoxyEnumerate}
+\item Make sure that gcc and git is installed on your computer.
+\item Then you need to run\+: ~\newline
+ \begin{DoxyVerb} git clone https://github.com/sovus-tartar/ded-s_projects
+\end{DoxyVerb}
+
+\item Then go to the \char`\"{}kvadratka\char`\"{} directory\+: \begin{DoxyVerb} cd ded's_projects/kvadratka
+\end{DoxyVerb}
+
+\item Run make\+: \begin{DoxyVerb} make
+\end{DoxyVerb}
+
+\item Enjoy!
+\end{DoxyEnumerate}\hypertarget{md_readme_autotoc_md3}{}\doxysection{Tests}\label{md_readme_autotoc_md3}
+0. Manually created test is \char`\"{}111.\+in\char`\"{}
+\begin{DoxyEnumerate}
+\item The test generator is included in folder tests.
+\item To generate tests you have to run \char`\"{}test\+\_\+generator\char`\"{} and put a number of tests you want to be.
+\item It will make tests in format\+: \begin{DoxyVerb} 3
+ 1 2 1 1 -1
+ 0 0 0 -1
+ 0 2 -4 1 2
+\end{DoxyVerb}
+ 3 -\/ number of tests
+
+1 2 1 -\/ coefficients of ax$^\wedge$2 + bx + c
+
+1 -\/ number of solutions. If -\/1 it means that all x are solutions
+
+-\/1 -\/ solution(s)
+\end{DoxyEnumerate}\hypertarget{md_readme_autotoc_md4}{}\doxysubsection{Usage (for tests)}\label{md_readme_autotoc_md4}
+\begin{DoxyVerb}    ./kvadratka -t < test_file.in
+\end{DoxyVerb}
+ 

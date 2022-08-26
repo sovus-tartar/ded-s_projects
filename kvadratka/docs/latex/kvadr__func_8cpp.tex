@@ -1,0 +1,266 @@
+\hypertarget{kvadr__func_8cpp}{}\doxysection{source/kvadr\+\_\+func.cpp File Reference}
+\label{kvadr__func_8cpp}\index{source/kvadr\_func.cpp@{source/kvadr\_func.cpp}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$errno.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../headers/kvadr\+\_\+func.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{kvadr__func_8cpp_acaf1dcea7c3c52a8f66f1f7f241f9912}{print\+\_\+description}} ()
+\begin{DoxyCompactList}\small\item\em Print description This function prints information about the program. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_acb3d9b5cfdbe6e79ee326c1e1abcadc7}{is\+\_\+equal}} (const double num1, const double num2)
+\begin{DoxyCompactList}\small\item\em Comparison floating-\/point numbers. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a19beaafe770709400a30b4cb8db5975c}{check\+\_\+coefficients}} (double a, double b, double c)
+\begin{DoxyCompactList}\small\item\em Checks coeefficients using isfinite() \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a66853ab57739c78bf08eac531e2edb10}{clean\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Clean buffer This function cleans stdin. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a53c23047136a268468a417304b268ef1}{check\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Check buffer This function checks if there is something in stdin buffer but space symbols TILL THE END OF LINE. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a0fa0fdea4002eb78e38c0d1e8fe5ada9}{input\+\_\+coefficients}} (\mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$coefficients)
+\begin{DoxyCompactList}\small\item\em Imput coefficient function This function allows save input of coefficients of square equation with user messages. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a681f2193a4c2587015429c3c0e5c0681}{solve\+\_\+square\+\_\+equation}} (const \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$coefficients, \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solves)
+\begin{DoxyCompactList}\small\item\em This function solves square equation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_ae4dda39a52a71137b9fe26e44338526e}{solve\+\_\+linear\+\_\+equation}} (const \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$coefficients, \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solves)
+\begin{DoxyCompactList}\small\item\em This function solves linear equations. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_aa15814cbf9266df1276823b0fdb0ea9d}{check\+\_\+solves}} (const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solves)
+\begin{DoxyCompactList}\small\item\em Checks solves structure if it is correct format. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a0a9e041cdbe07c6f57176c81fcae44d5}{print\+\_\+solves}} (const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$solves)
+\begin{DoxyCompactList}\small\item\em Print solves This function prints solves to the screen. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} \mbox{\hyperlink{kvadr__func_8cpp_a44950d2a294b126f73efc0483ff88d4d}{init\+\_\+sq\+\_\+eq\+\_\+coef}} ()
+\begin{DoxyCompactList}\small\item\em sq\+\_\+eq\+\_\+coef type initializer \end{DoxyCompactList}\item 
+\mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} \mbox{\hyperlink{kvadr__func_8cpp_ad805a2acef8c860305682623ecd912b0}{init\+\_\+eq\+\_\+solves}} ()
+\begin{DoxyCompactList}\small\item\em eq\+\_\+solve type initializer \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a01bd747d2b7e5477f1635dc2364839bb}{solve\+\_\+for\+\_\+user}} ()
+\begin{DoxyCompactList}\small\item\em User interface This function allows user to solve square equations with messages on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \mbox{\hyperlink{kvadr__func_8cpp_a596344e5a2992d2beec43b76a6294de0}{EPSILON}} = 0.\+000001
+\begin{DoxyCompactList}\small\item\em The accuracy of double numbers comparison. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{kvadr__func_8cpp_a93bc39c6ec446763cca1a276849afac3}{test\+\_\+mode\+\_\+enabled}}
+\begin{DoxyCompactList}\small\item\em Indicates if the \char`\"{}-\/t\char`\"{} flag enabled. For debug purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{kvadr__func_8cpp_a53c23047136a268468a417304b268ef1}\label{kvadr__func_8cpp_a53c23047136a268468a417304b268ef1}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!check\_buffer@{check\_buffer}}
+\index{check\_buffer@{check\_buffer}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{check\_buffer()}{check\_buffer()}}
+{\footnotesize\ttfamily int check\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check buffer This function checks if there is something in stdin buffer but space symbols TILL THE END OF LINE. 
+
+\begin{DoxyReturn}{Returns}
+1 if there are symbol except space symbol, else 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_a19beaafe770709400a30b4cb8db5975c}\label{kvadr__func_8cpp_a19beaafe770709400a30b4cb8db5975c}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!check\_coefficients@{check\_coefficients}}
+\index{check\_coefficients@{check\_coefficients}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{check\_coefficients()}{check\_coefficients()}}
+{\footnotesize\ttfamily int check\+\_\+coefficients (\begin{DoxyParamCaption}\item[{double}]{a,  }\item[{double}]{b,  }\item[{double}]{c }\end{DoxyParamCaption})}
+
+
+
+Checks coeefficients using isfinite() 
+
+\begin{DoxyReturn}{Returns}
+0 if it is OK, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_aa15814cbf9266df1276823b0fdb0ea9d}\label{kvadr__func_8cpp_aa15814cbf9266df1276823b0fdb0ea9d}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!check\_solves@{check\_solves}}
+\index{check\_solves@{check\_solves}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{check\_solves()}{check\_solves()}}
+{\footnotesize\ttfamily int check\+\_\+solves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solves }\end{DoxyParamCaption})}
+
+
+
+Checks solves structure if it is correct format. 
+
+\begin{DoxyReturn}{Returns}
+0 if it is OK, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_a66853ab57739c78bf08eac531e2edb10}\label{kvadr__func_8cpp_a66853ab57739c78bf08eac531e2edb10}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!clean\_buffer@{clean\_buffer}}
+\index{clean\_buffer@{clean\_buffer}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{clean\_buffer()}{clean\_buffer()}}
+{\footnotesize\ttfamily int clean\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clean buffer This function cleans stdin. 
+
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_ad805a2acef8c860305682623ecd912b0}\label{kvadr__func_8cpp_ad805a2acef8c860305682623ecd912b0}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!init\_eq\_solves@{init\_eq\_solves}}
+\index{init\_eq\_solves@{init\_eq\_solves}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{init\_eq\_solves()}{init\_eq\_solves()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} init\+\_\+eq\+\_\+solves (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+eq\+\_\+solve type initializer 
+
+\begin{DoxyReturn}{Returns}
+initialized variable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_a44950d2a294b126f73efc0483ff88d4d}\label{kvadr__func_8cpp_a44950d2a294b126f73efc0483ff88d4d}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!init\_sq\_eq\_coef@{init\_sq\_eq\_coef}}
+\index{init\_sq\_eq\_coef@{init\_sq\_eq\_coef}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{init\_sq\_eq\_coef()}{init\_sq\_eq\_coef()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} init\+\_\+sq\+\_\+eq\+\_\+coef (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+sq\+\_\+eq\+\_\+coef type initializer 
+
+\begin{DoxyReturn}{Returns}
+initialized variable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_a0fa0fdea4002eb78e38c0d1e8fe5ada9}\label{kvadr__func_8cpp_a0fa0fdea4002eb78e38c0d1e8fe5ada9}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!input\_coefficients@{input\_coefficients}}
+\index{input\_coefficients@{input\_coefficients}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{input\_coefficients()}{input\_coefficients()}}
+{\footnotesize\ttfamily int input\+\_\+coefficients (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$}]{coef }\end{DoxyParamCaption})}
+
+
+
+Imput coefficient function This function allows save input of coefficients of square equation with user messages. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coef} & The structure of coefficients \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/1 if input error, 0 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_acb3d9b5cfdbe6e79ee326c1e1abcadc7}\label{kvadr__func_8cpp_acb3d9b5cfdbe6e79ee326c1e1abcadc7}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!is\_equal@{is\_equal}}
+\index{is\_equal@{is\_equal}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{is\_equal()}{is\_equal()}}
+{\footnotesize\ttfamily int is\+\_\+equal (\begin{DoxyParamCaption}\item[{const double}]{num1,  }\item[{const double}]{num2 }\end{DoxyParamCaption})}
+
+
+
+Comparison floating-\/point numbers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num1,num2} & -\/ floating point numbers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 1 if equal, 0 if not equal 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_acaf1dcea7c3c52a8f66f1f7f241f9912}\label{kvadr__func_8cpp_acaf1dcea7c3c52a8f66f1f7f241f9912}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!print\_description@{print\_description}}
+\index{print\_description@{print\_description}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_description()}{print\_description()}}
+{\footnotesize\ttfamily void print\+\_\+description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print description This function prints information about the program. 
+
+\mbox{\Hypertarget{kvadr__func_8cpp_a0a9e041cdbe07c6f57176c81fcae44d5}\label{kvadr__func_8cpp_a0a9e041cdbe07c6f57176c81fcae44d5}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!print\_solves@{print\_solves}}
+\index{print\_solves@{print\_solves}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{print\_solves()}{print\_solves()}}
+{\footnotesize\ttfamily int print\+\_\+solves (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solves }\end{DoxyParamCaption})}
+
+
+
+Print solves This function prints solves to the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em solves} & the structure of solves to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if all is OK, -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_a01bd747d2b7e5477f1635dc2364839bb}\label{kvadr__func_8cpp_a01bd747d2b7e5477f1635dc2364839bb}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!solve\_for\_user@{solve\_for\_user}}
+\index{solve\_for\_user@{solve\_for\_user}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{solve\_for\_user()}{solve\_for\_user()}}
+{\footnotesize\ttfamily int solve\+\_\+for\+\_\+user (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+User interface This function allows user to solve square equations with messages on the screen. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if all is ok, -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_ae4dda39a52a71137b9fe26e44338526e}\label{kvadr__func_8cpp_ae4dda39a52a71137b9fe26e44338526e}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!solve\_linear\_equation@{solve\_linear\_equation}}
+\index{solve\_linear\_equation@{solve\_linear\_equation}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{solve\_linear\_equation()}{solve\_linear\_equation()}}
+{\footnotesize\ttfamily int solve\+\_\+linear\+\_\+equation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$}]{coefficients,  }\item[{\mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solves }\end{DoxyParamCaption})}
+
+
+
+This function solves linear equations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & structure of coefficients to read \\
+\hline
+{\em solves} & the pointer to the structure of solves to write. The root will be written to x1 field and the num\+\_\+of\+\_\+sol field is 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if all is OK, -\/1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{kvadr__func_8cpp_a681f2193a4c2587015429c3c0e5c0681}\label{kvadr__func_8cpp_a681f2193a4c2587015429c3c0e5c0681}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!solve\_square\_equation@{solve\_square\_equation}}
+\index{solve\_square\_equation@{solve\_square\_equation}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{solve\_square\_equation()}{solve\_square\_equation()}}
+{\footnotesize\ttfamily int solve\+\_\+square\+\_\+equation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{kvadr__func_8h_a6cc22e2c29928f6e515ffe82507aeecc}{sq\+\_\+eq\+\_\+coef}} $\ast$}]{coefficients,  }\item[{\mbox{\hyperlink{kvadr__func_8h_a1daec17be97a7fdedb9ef28874487ca6}{eq\+\_\+solve}} $\ast$}]{solves }\end{DoxyParamCaption})}
+
+
+
+This function solves square equation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & structure of coefficients to read \\
+\hline
+{\em solves} & the pointer to the structure of solves to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if all is OK, -\/1 otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{kvadr__func_8cpp_a596344e5a2992d2beec43b76a6294de0}\label{kvadr__func_8cpp_a596344e5a2992d2beec43b76a6294de0}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!EPSILON@{EPSILON}}
+\index{EPSILON@{EPSILON}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{EPSILON}{EPSILON}}
+{\footnotesize\ttfamily const double EPSILON = 0.\+000001}
+
+
+
+The accuracy of double numbers comparison. 
+
+\mbox{\Hypertarget{kvadr__func_8cpp_a93bc39c6ec446763cca1a276849afac3}\label{kvadr__func_8cpp_a93bc39c6ec446763cca1a276849afac3}} 
+\index{kvadr\_func.cpp@{kvadr\_func.cpp}!test\_mode\_enabled@{test\_mode\_enabled}}
+\index{test\_mode\_enabled@{test\_mode\_enabled}!kvadr\_func.cpp@{kvadr\_func.cpp}}
+\doxysubsubsection{\texorpdfstring{test\_mode\_enabled}{test\_mode\_enabled}}
+{\footnotesize\ttfamily int test\+\_\+mode\+\_\+enabled\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Indicates if the \char`\"{}-\/t\char`\"{} flag enabled. For debug purposes. 
+
