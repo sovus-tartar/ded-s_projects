@@ -20,9 +20,6 @@ int main()
     int N, i, successful_read;
     N = 0;
     i = 0;
-    successful_read = 0;
-
-
     successful_read = scanf("%d", &N);
 
     srand(time(NULL));
@@ -31,13 +28,7 @@ int main()
 
     for (int i = 0; i < N; i++)
     {
-        double x1, x2, a, b, c;
-        
-        x1 = NAN;
-        x2 = NAN;
-        a = 0;
-        b = 0;
-        c = 0;
+        double x1 = NAN, x2 = NAN, a = NAN, b = NAN, c = NAN;
 
         while ((is_equal((x1 = (double)(rand() % 100)), 0)) 
         || (is_equal((x2 = (double)(rand() % 100)), 0)) 
