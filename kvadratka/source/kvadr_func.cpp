@@ -109,11 +109,6 @@ int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
         return 0;
     }    
 
-    if (is_equal(b, 0) && !is_equal(c, 0)) {
-        solves->num_of_sol = NO_SOLUTIONS;
-        return 0;
-    }
-
     double discriminant = b * b - 4 * a * c;
 
     if (is_equal(discriminant, 0))
