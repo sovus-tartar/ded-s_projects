@@ -1,6 +1,7 @@
 #include "../headers/str_func.h"
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 int main() {
     char test_str[100] = "This is test str\0bla";
     char dest_str[100] = "";
@@ -45,5 +46,5 @@ int main() {
     my_puts(ptr1);
     free(ptr1);
 
-
+    return 0;
 }

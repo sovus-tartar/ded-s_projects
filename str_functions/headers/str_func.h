@@ -21,5 +21,3 @@ char * my_strncat (char *dstptr, const char *srcptr, size_t len);
 char * my_fgets(char * str, int num, FILE * filestream);
 
 char * my_strdup (const char *src);
-
-
