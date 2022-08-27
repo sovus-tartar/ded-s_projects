@@ -48,6 +48,8 @@ int check_buffer()
 
 int input_coefficients(sq_eq_coef *coefficients)
 {
+    assert(coefficients);
+
     if (test_mode_enabled == 0)
     {
         printf("Enter coefficients in ax^2 + bx + c = 0, devided by spaces:\n");
@@ -88,7 +90,9 @@ int input_coefficients(sq_eq_coef *coefficients)
 
 int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 {
-    
+    assert(coefficients);
+    assert(solves);
+
     double a = coefficients->a;
     double b = coefficients->b;
     double c = coefficients->c;
@@ -138,6 +142,10 @@ int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 
 int solve_linear_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 {
+    assert(coefficients);
+    assert(solves);
+
+
     double a = coefficients->a;
     double b = coefficients->b;
     double c = coefficients->c;
@@ -178,6 +186,8 @@ int solve_linear_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 
 int check_solves(const eq_solve *solves)
 {   
+    assert(solves);
+
     switch (solves->num_of_sol)
     {
     case INIT_VALUE:
@@ -197,6 +207,8 @@ int check_solves(const eq_solve *solves)
 
 int print_solves(const eq_solve *solves)
 {
+    assert(solves);
+
     if (check_solves(solves))
     {
         errno = EINVAL;
@@ -251,8 +263,6 @@ int solve_for_user()
 {
     eq_solve solves = init_eq_solves();
     sq_eq_coef coefficients = init_sq_eq_coef();
-
-    int err_code = 0;
     
     input_coefficients(&coefficients);
     solve_square_equation(&coefficients, &solves);
@@ -261,5 +271,5 @@ int solve_for_user()
     if (errno != 0)
         perror("solve_for_user");
 
-    return err_code;
+    return errno;
 }
