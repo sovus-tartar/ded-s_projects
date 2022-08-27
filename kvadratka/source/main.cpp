@@ -44,5 +44,5 @@ int main(int argc, char *argv[])
         return errno;
     }
 
-    return 0;
+    return errno;
 }

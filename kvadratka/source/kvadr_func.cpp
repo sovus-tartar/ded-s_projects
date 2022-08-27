@@ -106,6 +106,7 @@ int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
 
     if (is_equal(b, 0) && is_equal(c, 0)) {
         solves->num_of_sol = INF_SOLUTIONS;
+        
         return 0;
     }    
 
@@ -115,6 +116,7 @@ int solve_square_equation(const sq_eq_coef *coefficients, eq_solve *solves)
     {
         solves->num_of_sol = 1;
         solves->x1 = -b / (2 * a);
+        
         return 0;
     }
     else if (discriminant < 0)
